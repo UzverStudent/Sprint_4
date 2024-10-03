@@ -48,7 +48,6 @@ public class FAQDropdownTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:/webdrivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/"); // Задай нужный URL
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
