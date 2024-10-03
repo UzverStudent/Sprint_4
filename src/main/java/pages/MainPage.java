@@ -23,6 +23,9 @@ public class MainPage {
     //Локатор для прокрутки страницы до блока с вопросами
     private By questionBoard = By.xpath("(//div[(@class = 'Home_FourPart__1uthg')])");
 
+    //Локатор для прокрутки страницы до нижней кнопки "Заказать"
+    private By bottomOrderButtonLocation = By.xpath("(//div[(@class = 'Home_RoadMap__2tal_')])");
+
     //Локатор для кнопки согласия с куками
     private By cookieButton = By.className("App_CookieButton__3cvqF");
 
@@ -30,7 +33,7 @@ public class MainPage {
     private By orderButtonTop = By.xpath("//button[text()='Заказать' and @class='Button_Button__ra12g']");
 
     //Локатор нижней кнопки "Заказать"
-    private By orderButtonBottom = By.xpath("//button[contains(@class, 'Button_Button__ra12g') and contains(@class, 'Button_UltraBig__UU3Lp')]");
+    private By orderButtonBottom = By.xpath("//button[contains(@class, 'Button_Button__ra12g') and contains(@class, 'Button_Middle__1CSJM')]");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -69,7 +72,14 @@ public class MainPage {
         driver.findElement(orderButtonTop).click();
     }
     //Метод для клика на нижнюю кнопку "Заказать"
+
+    public void scrollToBottomOrderButton(){
+        WebElement element = driver.findElement(bottomOrderButtonLocation);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+    }
+
     public void clickOrderButtonBottom() {
+        scrollToBottomOrderButton();
         driver.findElement(orderButtonBottom).click();
     }
 }
